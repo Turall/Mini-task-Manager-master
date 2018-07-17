@@ -6,11 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using Clients;
 
 namespace WpfApp2
 {
@@ -23,76 +21,78 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            System.Windows.Threading.DispatcherTimer dispatcher = new System.Windows.Threading.DispatcherTimer();
-            dispatcher.Tick += Dispatcher_Tick;
-            dispatcher.Interval = new TimeSpan(0, 0, 3);
-            dispatcher.Start();
         }
 
-        private void Dispatcher_Tick(object sender, EventArgs e)
+
+
+        public void ProcessesList()
         {
-            ProcessesList();
+
+            var processes = Client.SendMessage(cmdTxt.Text);
+            if (processList.Items.Count != 0)
+            {
+                processList.Items.Clear();
+            }
+            foreach (var item in processes.Split('\n'))
+            {
+                processList.Items.Add(item);
+            }
+
         }
 
-        public  void ProcessesList()
-        {
-            var processes = Process.GetProcesses();
-            if(processList.Items.Count != 0)
-            {
-            processList.Items.Clear();
-            }
-            foreach (var item in processes)
-            {
-                processList.Items.Add(item.ProcessName);
-            }
-           
-        }
-        public void CallBack(object obj)
-        {
-            ProcessesList();
-        }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
+            ProcessesList();
             if (string.IsNullOrWhiteSpace(Txtbox.Text))
             {
                 return;
             }
             else
             {
-                Process.Start(Txtbox.Text);
+                Client.SendMessage(Txtbox.Text);
                 Txtbox.Clear();
             }
         }
 
         private void KillBtn_Click(object sender, RoutedEventArgs e)
         {
-            var processes = Process.GetProcesses();
+
             if (!string.IsNullOrWhiteSpace(Txtbox.Text))
             {
-                foreach (var item in processes)
+                foreach (string item in processList.Items)
                 {
-                    if (item.ProcessName.Equals(Txtbox.Text))
+                    if (item.Equals(Txtbox.Text))
                     {
-                        
-                        item.Kill();
+                        Client.SendMessage(Txtbox.Text);
                         Txtbox.Clear();
                     }
                 }
-            } else
+            }
+            else
             {
                 var selected = processList.SelectedItem as string;
-                foreach (var item in processes)
+                foreach (string item in processList.Items)
                 {
-                    if (item.ProcessName.Equals(selected))
+                    if (item.Equals(selected))
                     {
-                        item.Kill();
+                        Client.SendMessage(Txtbox.Text);
                         Txtbox.Clear();
                     }
                 }
-               
+
             }
-            
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            cmdTxt.Visibility = Visibility.Visible;
+            Txtbox.IsEnabled = true;
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Txtbox.IsEnabled = false;
         }
     }
 }
