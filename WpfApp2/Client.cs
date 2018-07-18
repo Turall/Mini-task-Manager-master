@@ -16,13 +16,12 @@ namespace Clients
         public static string SendMessage(string command)
         {
             
-            string ip = "10.0.0.50";
+            string ip = "127.0.0.1";
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 1100);
             Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(iPEndPoint);
-            Console.WriteLine(command
-                );
-            byte[] recbyte = new byte[1024];
+           // Console.WriteLine(command);
+            byte[] recbyte = new byte[2048];
             byte[] cmdBytes = Encoding.Unicode.GetBytes(command);
             socket.Send(cmdBytes);
             int recCount = socket.Receive(recbyte);

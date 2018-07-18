@@ -24,11 +24,10 @@ namespace WpfApp2
         }
 
 
-
-        public void ProcessesList()
+        public void ProcessesList(string cmd)
         {
 
-            var processes = Client.SendMessage(cmdTxt.Text);
+            var processes = Client.SendMessage(cmd);
             if (processList.Items.Count != 0)
             {
                 processList.Items.Clear();
@@ -43,15 +42,14 @@ namespace WpfApp2
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            ProcessesList();
+            
             if (string.IsNullOrWhiteSpace(Txtbox.Text))
             {
                 return;
             }
             else
             {
-                Client.SendMessage(Txtbox.Text);
-                Txtbox.Clear();
+                ProcessesList(Txtbox.Text);
             }
         }
 
@@ -60,39 +58,15 @@ namespace WpfApp2
 
             if (!string.IsNullOrWhiteSpace(Txtbox.Text))
             {
-                foreach (string item in processList.Items)
-                {
-                    if (item.Equals(Txtbox.Text))
-                    {
-                        Client.SendMessage(Txtbox.Text);
-                        Txtbox.Clear();
-                    }
-                }
+                ProcessesList(Txtbox.Text);
+
             }
             else
             {
                 var selected = processList.SelectedItem as string;
-                foreach (string item in processList.Items)
-                {
-                    if (item.Equals(selected))
-                    {
-                        Client.SendMessage(Txtbox.Text);
-                        Txtbox.Clear();
-                    }
-                }
-
+                ProcessesList(Txtbox.Text);
             }
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            cmdTxt.Visibility = Visibility.Visible;
-            Txtbox.IsEnabled = true;
-        }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Txtbox.IsEnabled = false;
         }
     }
 }

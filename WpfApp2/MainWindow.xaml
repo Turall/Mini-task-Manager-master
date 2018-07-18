@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="650" Background="DarkKhaki"  ResizeMode="NoResize" Loaded="Window_Loaded" >
+        Title="MainWindow" Height="450" Width="650" Background="DarkKhaki"  ResizeMode="NoResize"  >
     <Grid Width="644">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,8 +18,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="318,52,0,0" TextWrapping="Wrap" Text="Process Name" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.592" Height="22" Width="76" Foreground="White"/>
         <Button Name="StartBtn" Content="Start" Foreground="Green" HorizontalAlignment="Left" Margin="328,143,0,0" VerticalAlignment="Top" Width="75" Click="StartBtn_Click"/>
         <Button Name="KillBtn" Content="Kill" Foreground="Red" HorizontalAlignment="Left" Margin="516,143,0,0" VerticalAlignment="Top" Width="75" Click="KillBtn_Click"/>
-        <TextBox Visibility="Hidden" HorizontalAlignment="Left" Name="cmdTxt" Height="23" Margin="395,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Input Command" HorizontalAlignment="Left" Margin="408,143,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click"/>
+       <!--<TextBox Visibility="Hidden" HorizontalAlignment="Left" Name="cmdTxt" Height="23" Margin="395,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>-->
 
     </Grid>
 </Window>
