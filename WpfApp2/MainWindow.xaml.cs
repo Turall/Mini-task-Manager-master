@@ -21,6 +21,9 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
+            TxtBoxCommand.Text = "Commands :\nCommand 'Show' - show all processes. \n" +
+                "Command 'Start-App Name'- Run Application. \n" +
+                "Command 'Kill- App Name' - Kill Aplication";
         }
 
 
@@ -53,20 +56,20 @@ namespace WpfApp2
             }
         }
 
-        private void KillBtn_Click(object sender, RoutedEventArgs e)
-        {
+        //private void KillBtn_Click(object sender, RoutedEventArgs e)
+        //{
 
-            if (!string.IsNullOrWhiteSpace(Txtbox.Text))
-            {
-                ProcessesList(Txtbox.Text);
+        //    if (!string.IsNullOrWhiteSpace(Txtbox.Text))
+        //    {
+        //        ProcessesList(Txtbox.Text);
 
-            }
-            else
-            {
-                var selected = processList.SelectedItem as string;
-                ProcessesList(Txtbox.Text);
-            }
+        //    }
+        //    else
+        //    {
+        //        var selected = processList.SelectedItem as string;
+        //        ProcessesList(Txtbox.Text);
+        //    }
 
-        }
+        //}
     }
 }

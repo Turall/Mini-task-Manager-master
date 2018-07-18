@@ -69,7 +69,7 @@ namespace Server
                         listener.Send(Encoding.Unicode.GetBytes(bytes));
                         bytes = "";
                     }
-                    else if (data.ToLower().Split('-')[0].Equals("Kill"))
+                    else if (data.ToLower().Split('-')[0].Equals("kill"))
                     {
                         foreach (var item in Process.GetProcesses())
                         {

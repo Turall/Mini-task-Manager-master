@@ -14,11 +14,11 @@
             </LinearGradientBrush>
         </Grid.Background>
         <ListBox Name="processList" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="289" Background="#FF373434" Foreground="#FFFCFCFC"/>
-        <TextBox Name="Txtbox" HorizontalAlignment="Left" Height="29" Margin="399,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Margin="318,52,0,0" TextWrapping="Wrap" Text="Process Name" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.592" Height="22" Width="76" Foreground="White"/>
-        <Button Name="StartBtn" Content="Start" Foreground="Green" HorizontalAlignment="Left" Margin="328,143,0,0" VerticalAlignment="Top" Width="75" Click="StartBtn_Click"/>
-        <Button Name="KillBtn" Content="Kill" Foreground="Red" HorizontalAlignment="Left" Margin="516,143,0,0" VerticalAlignment="Top" Width="75" Click="KillBtn_Click"/>
-       <!--<TextBox Visibility="Hidden" HorizontalAlignment="Left" Name="cmdTxt" Height="23" Margin="395,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>-->
+        <TextBox Name="Txtbox" HorizontalAlignment="Left" Height="29" Margin="427,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
+        <TextBlock HorizontalAlignment="Left" Margin="318,49,0,0" TextWrapping="Wrap" Text="Command Name" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.592" Height="25" Width="104" Foreground="White"/>
+        <Button Name="StartBtn" Content="Run Command" Foreground="Green" HorizontalAlignment="Left" Margin="427,139,0,0" VerticalAlignment="Top" Width="131" Click="StartBtn_Click"/>
+        <TextBlock Name="TxtBoxCommand" HorizontalAlignment="Left" Margin="294,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="178" Width="350" Foreground="#FFE87373"/>
+        <!--<TextBox Visibility="Hidden" HorizontalAlignment="Left" Name="cmdTxt" Height="23" Margin="395,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>-->
 
     </Grid>
 </Window>
