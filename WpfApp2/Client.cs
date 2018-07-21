@@ -1,39 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Net.Sockets;
 using System.Net;
-using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Windows;
 
 namespace Clients
 {
     public class Client
     {
-        public static string SendMessage(string command)
+        public static string SendMessage(string command,string Ip = "127.0.0.1")
         {
-            
-            string ip = "127.0.0.1";
+            string ip = Ip;
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 1100);
-            Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(iPEndPoint);
-           // Console.WriteLine(command);
-            byte[] recbyte = new byte[2048];
-            byte[] cmdBytes = Encoding.Unicode.GetBytes(command);
-            socket.Send(cmdBytes);
-            int recCount = socket.Receive(recbyte);
-            var listOfProc = Encoding.Unicode.GetString(recbyte, 0, recCount);
-          
-
-            //if (listOfProc.IndexOf("<TheEnd>") == -1)
-            //    SendMessage();
-
-            socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
-            return listOfProc;
+            try
+            {
+                Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                 socket.Connect(iPEndPoint);
+                byte[] recbyte = new byte[5000];
+                byte[] cmdBytes = Encoding.Unicode.GetBytes(command);
+                socket.Send(cmdBytes);
+                int recCount = socket.Receive(recbyte);
+                var listOfProc = Encoding.Unicode.GetString(recbyte, 0, recCount);
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+                return listOfProc;
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Server not Running!! " + ex.Message);
+                return null;
+            }
+           
 
         }
     }
