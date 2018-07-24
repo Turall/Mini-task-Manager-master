@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Text;
+using System.Threading;
+using System.Windows;
 using Clients;
 
 namespace WpfApp2
@@ -45,7 +47,6 @@ namespace WpfApp2
             {
                 MessageBox.Show(ex.Message);
             }
-            
 
         }
 
@@ -85,6 +86,22 @@ namespace WpfApp2
             IpTextBlock.Visibility = Visibility.Visible;
             IpTextbox.Visibility = Visibility.Visible;
             ApplyBtn.Visibility = Visibility.Visible;
+        }
+
+        private  void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Form1 form = new Form1();
+            string screen = "";
+            if (string.IsNullOrEmpty(ip))
+            {
+                screen = Client.SendMessage("getscreen");
+            }
+            else
+                screen = Client.SendMessage("getscreen", ip);
+
+             form.GetScreen(Encoding.Unicode.GetBytes(screen));
+            form.ShowDialog();
+             form.Close();
         }
     }
 }

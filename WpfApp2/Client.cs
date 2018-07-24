@@ -15,7 +15,7 @@ namespace Clients
             {
                 Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                  socket.Connect(iPEndPoint);
-                byte[] recbyte = new byte[5000];
+                byte[] recbyte = new byte[1500000];
                 byte[] cmdBytes = Encoding.Unicode.GetBytes(command);
                 socket.Send(cmdBytes);
                 int recCount = socket.Receive(recbyte);
@@ -29,8 +29,6 @@ namespace Clients
                 MessageBox.Show("Server not Running!! " + ex.Message);
                 return null;
             }
-           
-
         }
     }
 }
