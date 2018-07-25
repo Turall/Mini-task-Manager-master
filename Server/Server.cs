@@ -50,7 +50,7 @@ namespace Server
 
                 socket.Bind(iPEndPoint);
                 socket.Listen(2);
-                byte[] recByte = new byte[1500000];
+                byte[] recByte = new byte[150_00_00];
                 IEnumerable<string> pros = null;
                 while (true)
                 {

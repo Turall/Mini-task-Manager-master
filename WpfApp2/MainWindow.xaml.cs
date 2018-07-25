@@ -99,7 +99,8 @@ namespace WpfApp2
             else
                 screen = Client.SendMessage("getscreen", ip);
 
-             form.GetScreen(Encoding.Unicode.GetBytes(screen));
+            var bytes = Encoding.Unicode.GetBytes(screen);
+             form.GetScreen(bytes);
             form.ShowDialog();
              form.Close();
         }

@@ -20,6 +20,7 @@ namespace WpfApp2
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace WpfApp2
             {
                
                 memStream.Write(bytes, 0, Convert.ToInt32(bytes.Length));
-                Bitmap bitmap = new Bitmap(memStream, false);
+                Bitmap bitmap = new Bitmap(memStream);
                 pictureBox1.Image = bitmap;
             }
         }
