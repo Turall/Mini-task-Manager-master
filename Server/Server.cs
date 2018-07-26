@@ -33,10 +33,10 @@ namespace Server
         private static void ConnectToClient()
         {
 
-            IPHostEntry myhost = Dns.GetHostEntry(Dns.GetHostName());
-            var ip = myhost.AddressList[1];
-            Console.WriteLine("Server IP : {0} ", ip);
-            IPEndPoint iPEndPoint = new IPEndPoint(ip, 1100);
+          //  IPHostEntry myhost = Dns.GetHostEntry(Dns.GetHostName());
+          //  var ip = myhost.AddressList[0];
+          //  Console.WriteLine("Server IP : {0} ", ip);
+            IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 1100);
             Socket socket = new Socket(iPEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             string bytes = "";
             var handle = GetConsoleWindow();
