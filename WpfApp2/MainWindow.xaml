@@ -49,6 +49,6 @@
         <Button Name="ApplyBtn" Content="Apply" HorizontalAlignment="Left" 
                     Margin="455,201,0,0" VerticalAlignment="Top" Width="131" 
                        Foreground="#FFBA0B0B" Click="ApplyBtn_Click"/>
-        <Button Content="Get Screenshot" HorizontalAlignment="Left" Margin="390,129,0,0" VerticalAlignment="Top" Width="117" Click="Button_Click" Foreground="#FFD01212"/>
+        <Button IsEnabled="False" Content="Get Screenshot" HorizontalAlignment="Left" Margin="390,129,0,0" VerticalAlignment="Top" Width="117" Click="Button_Click" Foreground="#FFD01212"/>
     </Grid>
 </Window>

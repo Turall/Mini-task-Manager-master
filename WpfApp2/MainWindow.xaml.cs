@@ -90,19 +90,7 @@ namespace WpfApp2
 
         private  void Button_Click(object sender, RoutedEventArgs e)
         {
-            Form1 form = new Form1();
-            string screen = "";
-            if (string.IsNullOrEmpty(ip))
-            {
-                screen = Client.SendMessage("getscreen");
-            }
-            else
-                screen = Client.SendMessage("getscreen", ip);
-
-            var bytes = Encoding.Unicode.GetBytes(screen);
-             form.GetScreen(bytes);
-            form.ShowDialog();
-             form.Close();
+            
         }
     }
 }
